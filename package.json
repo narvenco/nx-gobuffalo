@@ -1,6 +1,6 @@
 {
-  "name": "narvenco",
-  "version": "0.0.0",
+  "name": "nx-buffalo",
+  "version": "0.0.1",
   "license": "MIT",
   "scripts": {
     "nx": "nx",

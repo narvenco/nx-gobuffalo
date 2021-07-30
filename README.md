@@ -1,6 +1,4 @@
-
-
-# Narvenco
+# nx-gobuffalo
 
 This project was generated using [Nx](https://nx.dev).
 
