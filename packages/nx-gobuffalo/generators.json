@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "name": "nx-gobuffalo",
+  "version": "0.0.1",
+  "generators": {
+    "nx-gobuffalo": {
+      "factory": "./src/generators/nx-gobuffalo/generator",
+      "schema": "./src/generators/nx-gobuffalo/schema.json",
+      "description": "nx-gobuffalo generator"
+    }
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "version": 2,
+  "projects": {
+    "nx-gobuffalo": {
+      "root": "packages/nx-gobuffalo",
+      "sourceRoot": "packages/nx-gobuffalo/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["packages/nx-gobuffalo/**/*.ts"]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": ["coverage/packages/nx-gobuffalo"],
+          "options": {
+            "jestConfig": "packages/nx-gobuffalo/jest.config.js",
+            "passWithNoTests": true
+          }
+        },
+        "build": {
+          "executor": "@nrwl/node:package",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/packages/nx-gobuffalo",
+            "tsConfig": "packages/nx-gobuffalo/tsconfig.lib.json",
+            "packageJson": "packages/nx-gobuffalo/package.json",
+            "main": "packages/nx-gobuffalo/src/index.ts",
+            "assets": [
+              "packages/nx-gobuffalo/*.md",
+              {
+                "input": "./packages/nx-gobuffalo/src",
+                "glob": "**/!(*.ts)",
+                "output": "./src"
+              },
+              {
+                "input": "./packages/nx-gobuffalo/src",
+                "glob": "**/*.d.ts",
+                "output": "./src"
+              },
+              {
+                "input": "./packages/nx-gobuffalo",
+                "glob": "generators.json",
+                "output": "."
+              },
+              {
+                "input": "./packages/nx-gobuffalo",
+                "glob": "executors.json",
+                "output": "."
+              }
+            ]
+          }
+        }
+      }
+    },
+    "nx-gobuffalo-e2e": {
+      "root": "e2e/nx-gobuffalo-e2e",
+      "projectType": "application",
+      "sourceRoot": "e2e/nx-gobuffalo-e2e/src",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/nx-plugin:e2e",
+          "options": {
+            "target": "nx-gobuffalo:build",
+            "jestConfig": "e2e/nx-gobuffalo-e2e/jest.config.js"
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/workspace"
+  }
+}
